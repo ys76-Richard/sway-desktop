@@ -29,7 +29,9 @@ modules:
       # --- Ihre neuen System-, Sicherheits- und Krypto-Tools ---
       - yubikey-manager     # CLI-Verwaltung für YubiKeys
       - pcsc-lite           # Zwingend erforderlich für Smartcards/YubiKeys/Nitrokeys
-      - nitrokey-app        # Grafische Verwaltung für Nitrokeys (App 1/2-Unterstützung)
+      # - nitrokey-app        # Grafische Verwaltung für Nitrokeys (App 1/2-Unterstützung)
+      - opensc
+      - ccid
       - testdisk            # Datenrettung und Partitions-Reparatur
       - rkhunter            # Rootkit Hunter Sicherheits-Scanner
       - pwgen               # Passwort-Generator für das Terminal
@@ -40,14 +42,10 @@ modules:
       # --- LaTeX-Umgebung (Vollständig mit deutschem Sprachpaket) ---
       - texlive-scheme-medium # Enthält LaTeX und die wichtigsten Basispakete
       - texlive-lang-german # Deutsche Trennmuster, Dokumentationen und Pakete
-      - vim-latexsuite      # Die mächtige LaTeX-Erweiterung für Vim
-
+      
       # --- Audio, Video & Kamera-Infrastruktur ---
-      - pipewire            # Kern-Audiosystem (Sway-Standard)
-      - pipewire-utils      # CLI-Werkzeuge für Audio-Routing
       - v4l-utils           # Video4Linux-Utilities zur Kamera-Konfiguration
       - akmod-v4l2loopback  # Kernel-Modul für virtuelle Webcams (z.B. für OBS Studio)
-      - kmod-v4l2loopback   # Laufzeit-Binärdatei für das v4l2-Loopback-Modul
       - brightnessctl       # Hardware-Helligkeitssteuerung
 
       # --- Audio-Ripping, Codecs und Metadaten-Editoren ---
@@ -74,13 +72,12 @@ modules:
       - tlp
       - tlp-rdw
       - iio-sensor-proxy
-      - rot8
+      # - rot8
       - swaylock            # Der offizielle, sichere Bildschirmschoner/Sperrbildschirm für Sway
       - swayidle            # Hintergrunddienst für automatischen Standby/Bildschirmschoner
       - sway-audio-idle-inhibit # Pausiert Schoner bei Video/Audio
       - libwacom
       - libwacom-utils
-      - xf86-input-wacom
       - squeekboard
       - xournalpp
       - waybar
@@ -97,7 +94,7 @@ modules:
   - type: flatpak
     remotes:
       - name: flathub
-        url: https://flathub.org
+        # url: https://flathub.org
     install:
       - org.videolan.VLC
       - org.telegram.desktop
