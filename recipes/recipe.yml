@@ -96,7 +96,7 @@ modules:
         ##################################################################
         echo "Installing build dependencies for wvkbd..."
 
-        dnf install -v -y \
+        dnf install --rpmverbosity=debug -y \
           cairo-devel \
           cargo \
           git \
