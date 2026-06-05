@@ -68,7 +68,6 @@ modules:
       # - pdfposter           # Skaliert PDFs auf Postergröße (Kacheldruck)
       - gutenprint          # Hochwertige Druckertreiber-Bibliothek
       - nautilus
-      - nautilus-nextcloud
       # - yazi
       - ffmpegthumbnailer
       - poppler-utils
