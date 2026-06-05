@@ -71,21 +71,20 @@ modules:
         - tlp.service
         - iio-sensor-proxy.service
         - pcscd.service 
-
-  # Desktop-apps via Flatpak (secure, isolated and fast)
-  #- type: flatpak
-  #  remotes:
-  #    - name: flathub
-  #      # url: https://flathub.org
-  #  install:
-  #    - org.videolan.VLC
-  #    - org.telegram.desktop
-  #    - org.signal.Signal
-  #    - ch.threema.threema-web-desktop
-  #    - com.obsproject.Studio
-  #    - org.gnome.Papers    
-  #    - org.gnome.eog       
-
+  
+  - type: default-flatpaks
+    notify: true                # Notifies the user when installations finish
+    system:
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+      repo-title: "Flathub (sys)"
+      install:
+        - org.videolan.VLC
+        - org.telegram.desktop
+        - org.signal.Signal
+        - ch.threema.threema-web-desktop
+        - com.obsproject.Studio
+       
 
   - type: script
     snippets:
@@ -97,15 +96,22 @@ modules:
         echo "Installing build dependencies for wvkbd..."
 
         dnf install -y \
-          git \
-          make \
-          gcc \
-          wayland-devel \
           cairo-devel \
-          pango-devel \
+          cargo \
+          git \
+          libinput-devel \
           libxkbcommon-devel \
+          make \
+          meson \
+          ninja-build \
+          gcc \
+          glib2-devel \
+          pango-devel \
           pkgconf-pkg-config
-
+          rust \       
+          systemd-devel \
+          wayland-devel 
+          
         echo "Cloning wvkbd..."
 
         git clone --depth=1 https://github.com/jjsullivan5196/wvkbd.git /tmp/wvkbd
@@ -125,18 +131,6 @@ modules:
         # installing rot8
         ##################################################################
         echo "Installing rot8 dependencies..."
-
-        dnf install -y \
-          cargo \
-          git \
-          gcc \
-          make \
-          meson \
-          ninja-build \
-          libinput-devel \
-          rust \
-          systemd-devel \
-          glib2-devel
 
         echo "Cloning rot8..."
 
