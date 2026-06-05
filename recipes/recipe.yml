@@ -16,83 +16,55 @@ modules:
     - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
 
   #  Systemprogramme, Hardware-Treiber und CLI-Tools (RPM-Layering)
-  - type: rpm-ostree
     remove:
       - tuned-ppd
     install:
-      # --- Ihre Kern- und Netzwerkprogramme ---
-      - firefox
-      - keepassxc
-      - nmap
-      - vim
-      - neomutt
-      - brz                 # Bazaar-Nachfolger (Breezy)
-      - chromium
-      # - nextcloud-client-nautilus
-      - nextcloud-client-nautilus
-      - remmina
-      - remmina-plugins-rdp
-
-      # --- Ihre neuen System-, Sicherheits- und Krypto-Tools ---
-      - yubikey-manager     # CLI-Verwaltung für YubiKeys
-      - pcsc-lite           # Zwingend erforderlich für Smartcards/YubiKeys/Nitrokeys
-      # - nitrokey-app        # Grafische Verwaltung für Nitrokeys (App 1/2-Unterstützung)
-      - opensc
+      - brightnessctl
+      - brz                 
       - ccid
-      - testdisk            # Datenrettung und Partitions-Reparatur
-      - rkhunter            # Rootkit Hunter Sicherheits-Scanner
-      - pwgen               # Passwort-Generator für das Terminal
-      - unzip               # Standard-Entpacker
-      - screen              # Terminal-Multiplexer
-      - mosh                # Mobile Shell (robuste SSH-Alternative für unterwegs)
-      # build environment
-      - scdoc
-      - gcc 
-      - gcc-c++ 
-      - cmake 
-      - make 
-      - rpm-build
-      
-      # --- LaTeX-Umgebung (Vollständig mit deutschem Sprachpaket) ---
-      #- texlive-scheme-medium # Enthält LaTeX und die wichtigsten Basispakete
-      - texlive
-      # - texlive-lang-german # Deutsche Trennmuster, Dokumentationen und Pakete
-      
-      # --- Audio, Video & Kamera-Infrastruktur ---
-      - v4l-utils           # Video4Linux-Utilities zur Kamera-Konfiguration
-      # - akmod-v4l2loopback  # Kernel-Modul für virtuelle Webcams (z.B. für OBS Studio)
-      - brightnessctl       # Hardware-Helligkeitssteuerung
-
-      # --- Audio-Ripping, Codecs und Metadaten-Editoren ---
-      - flac                # FLAC-Audio-Codec-Werkzeuge
-      - opus-tools          # Opus-Audio-Codec-Werkzeuge
-      - id3v2               # ID3v2-Tag-Editor für MP3s
-      - id3lib              # ID3-Bibliothek für Software-Kompatibilität
-      - mpg123              # Schneller Konsolen-MP3-Player
-
-      # --- Grafik, Druck & Dateimanager ---
-      - ImageMagick           # Mächtige CLI-Bildbearbeitung
-      - gutenprint          # Hochwertige Druckertreiber-Bibliothek
-      - nautilus
-      # - yazi
+      - chromium
       - ffmpegthumbnailer
-      - poppler-utils
-      - jq
-
-      # --- Hardware, Rotation, Schoner & Strom sparen ---
-      - tlp
-      - tlp-rdw
+      - firefox
+      - flac         
+      - gutenprint   
+      - id3lib       
+      - id3v2        
       - iio-sensor-proxy
-      # - rot8
-      - swaylock            # Der offizielle, sichere Bildschirmschoner/Sperrbildschirm für Sway
-      - swayidle            # Hintergrunddienst für automatischen Standby/Bildschirmschoner
-      # - sway-audio-idle-inhibit # Pausiert Schoner bei Video/Audio
+      - ImageMagick  
+      - jq
+      - keepassxc
       - libwacom
       - libwacom-utils
+      - mosh                
+      - mpg123       
+      - nautilus
+      - neomutt
+      - nextcloud-client-nautilus
+      - nmap
+      - opensc
+      - opus-tools   
+      - pcsc-lite           
+      - poppler-utils
+      - pwgen               
+      - remmina
+      - remmina-plugins-rdp
+      - rkhunter       
+      - scdoc
+      - screen              
+      - swayidle 
+      - swaylock 
+      - testdisk            
+      - texlive
+      - tlp
+      - tlp-rdw
+      - unzip               
+      - v4l-utils
+      - vim
+      - waybar  
       - xournalpp
-      - waybar
-
-  #  Systemd-Dienste direkt beim Image-Bau aktivieren
+      # - yazi
+      - yubikey-manager
+  
   - type: systemd
     system:
       enabled:
@@ -145,3 +117,33 @@ modules:
 
         install -Dm755 wvkbd-mobintl /usr/bin/wvkbd-mobintl
         ln -sf /usr/bin/wvkbd-mobintl /usr/bin/wvkbd
+- type: script
+  snippets:
+    - |
+      set -eux
+
+      echo "Installing rot8 dependencies..."
+
+      dnf install -y \
+        git \
+        gcc \
+        make \
+        meson \
+        ninja-build \
+        libinput-devel \
+        systemd-devel \
+        glib2-devel
+
+      echo "Cloning rot8..."
+
+      git clone --depth=1 https://github.com/efernau/rot8.git /tmp/rot8
+      cd /tmp/rot8
+
+      echo "Building rot8..."
+
+      meson setup build
+      ninja -C build
+
+      echo "Installing rot8..."
+
+      ninja -C build install
