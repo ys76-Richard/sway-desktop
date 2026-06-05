@@ -5,13 +5,13 @@ description: Vollständig ausgestattetes Fedora für das ThinkPad X12 Detachable
 base-image: ghcr.io/fedora-cloud/fedora-sway-atomic:latest
 
 modules:
-  # 1. RPM-Fusion Quellen für Multimedia-Codecs, VLC und Grafiktreiber aktivieren
+  # RPM-Fusion Quellen für Multimedia-Codecs, VLC und Grafiktreiber aktivieren
   - type: rpm-ostree
     repos:
       - https://rpmfusion.org
       - https://rpmfusion.org
 
-  # 2. Systemprogramme, Hardware-Treiber und CLI-Tools (RPM-Layering)
+  #  Systemprogramme, Hardware-Treiber und CLI-Tools (RPM-Layering)
   - type: rpm-ostree
     install:
       # --- Ihre Kern- und Netzwerkprogramme ---
@@ -85,7 +85,7 @@ modules:
       - xournalpp
       - waybar
 
-  # 3. Systemd-Dienste direkt beim Image-Bau aktivieren
+  #  Systemd-Dienste direkt beim Image-Bau aktivieren
   - type: systemd
     system:
       enabled:
@@ -93,7 +93,7 @@ modules:
         - iio-sensor-proxy.service
         - pcscd.service     # Aktiviert den Smartcard-Hintergrunddienst für YubiKey/Nitrokey
 
-  # 4. Desktop-Anwendungen via Flatpak (Sicher, isoliert und performant)
+  # Desktop-Anwendungen via Flatpak (Sicher, isoliert und performant)
   - type: flatpak
     remotes:
       - name: flathub
