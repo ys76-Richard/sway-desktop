@@ -91,7 +91,9 @@ modules:
     snippets:
       - |
         set -eux
-
+        ##################################################################
+        # installing wvkdb
+        ##################################################################
         echo "Installing build dependencies for wvkbd..."
 
         dnf install -y \
@@ -118,32 +120,32 @@ modules:
         install -Dm755 wvkbd-mobintl /usr/bin/wvkbd-mobintl
         ln -sf /usr/bin/wvkbd-mobintl /usr/bin/wvkbd
 
-  snippets:
-    - |
-      set -eux
 
-      echo "Installing rot8 dependencies..."
+        ##################################################################
+        # installing rot8
+        ##################################################################
+        echo "Installing rot8 dependencies..."
 
-      dnf install -y \
-        git \
-        gcc \
-        make \
-        meson \
-        ninja-build \
-        libinput-devel \
-        systemd-devel \
-        glib2-devel
+        dnf install -y \
+          git \
+          gcc \
+          make \
+          meson \
+          ninja-build \
+          libinput-devel \
+          systemd-devel \
+          glib2-devel
 
-      echo "Cloning rot8..."
+        echo "Cloning rot8..."
 
-      git clone --depth=1 https://github.com/efernau/rot8.git /tmp/rot8
-      cd /tmp/rot8
+        git clone --depth=1 https://github.com/efernau/rot8.git /tmp/rot8
+        cd /tmp/rot8
 
-      echo "Building rot8..."
+        echo "Building rot8..."
 
-      meson setup build
-      ninja -C build
+        meson setup build
+        ninja -C build
 
-      echo "Installing rot8..."
+        echo "Installing rot8..."
 
-      ninja -C build install
+        ninja -C build install
