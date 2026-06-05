@@ -2,16 +2,18 @@
 
 name: sway desktop - ys76
 description: Immutable Fedora für das ThinkPad X12 Detachable mit Sway
-image-version: latest
 
-base-image: ghcr.io/fedora-cloud/fedora-sway-atomic:latest
+# base-image: # the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/silverblue-main
+image-version: 44 # latest is also supported if you want new updates ASAP
+
 
 modules:
   # RPM-Fusion Quellen für Multimedia-Codecs, VLC und Grafiktreiber aktivieren
   - type: rpm-ostree
     repos:
-      - https://rpmfusion.org
-      - https://rpmfusion.org
+    - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
+    - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
 
   #  Systemprogramme, Hardware-Treiber und CLI-Tools (RPM-Layering)
   - type: rpm-ostree
