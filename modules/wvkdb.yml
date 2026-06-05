@@ -1,0 +1,20 @@
+modules:
+  - type: script
+    snippets:
+      - |
+        set -eux
+
+        dnf install -y \
+          gcc \
+          make \
+          meson \
+          ninja-build \
+          wayland-devel \
+          cairo-devel \
+          pango-devel
+
+        git clone --depth=1 https://github.com/jjsullivan5196/wvkbd.git /tmp/wvkbd
+        cd /tmp/wvkbd
+
+        make
+        install -Dm755 wvkbd-mobintl /usr/local/bin/wvkbd-mobintl
