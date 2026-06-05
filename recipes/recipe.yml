@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 
-name: sway desktop - ys76
+name: sway-desktop
 description: Immutable Fedora für das ThinkPad X12 Detachable mit Sway
 
 # base-image: # the base image to build on top of (FROM) and the version tag to use
