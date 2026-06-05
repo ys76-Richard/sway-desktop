@@ -84,6 +84,7 @@ modules:
       - libwacom
       - libwacom-utils
       # - squeekboard
+      - wvkdb
       - xournalpp
       - waybar
 
