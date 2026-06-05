@@ -1,15 +1,16 @@
 # yaml-language-server: $schema=https://blue-build.org
 name: custom-silverblue-x12
 description: Vollständig ausgestattetes Fedora für das ThinkPad X12 Detachable mit Sway
-     
+
 base-image: ghcr.io/fedora-cloud/fedora-sway-atomic:latest
-      
+
 modules:
   # 1. RPM-Fusion Quellen für Multimedia-Codecs, VLC und Grafiktreiber aktivieren
   - type: rpm-ostree
     repos:
       - https://rpmfusion.org
-      
+      - https://rpmfusion.org
+
   # 2. Systemprogramme, Hardware-Treiber und CLI-Tools (RPM-Layering)
   - type: rpm-ostree
     install:
@@ -35,12 +36,12 @@ modules:
       - unzip               # Standard-Entpacker
       - screen              # Terminal-Multiplexer
       - mosh                # Mobile Shell (robuste SSH-Alternative für unterwegs)
-    
+
       # --- LaTeX-Umgebung (Vollständig mit deutschem Sprachpaket) ---
       - texlive-scheme-medium # Enthält LaTeX und die wichtigsten Basispakete
       - texlive-lang-german # Deutsche Trennmuster, Dokumentationen und Pakete
       - vim-latexsuite      # Die mächtige LaTeX-Erweiterung für Vim
-      
+
       # --- Audio, Video & Kamera-Infrastruktur ---
       - pipewire            # Kern-Audiosystem (Sway-Standard)
       - pipewire-utils      # CLI-Werkzeuge für Audio-Routing
@@ -57,4 +58,52 @@ modules:
       - id3lib              # ID3-Bibliothek für Software-Kompatibilität
       - mp3split            # Präzises Schneiden von MP3/OGG-Dateien ohne Qualitätsverlust
       - mpg123              # Schneller Konsolen-MP3-Player
-                                                                                                                                                                                                                           55,7       Anfang
+
+      # --- Grafik, Druck & Dateimanager ---
+      - imagemagick         # Mächtige CLI-Bildbearbeitung
+      - pdfposter           # Skaliert PDFs auf Postergröße (Kacheldruck)
+      - gutenprint          # Hochwertige Druckertreiber-Bibliothek
+      - nautilus
+      - nautilus-nextcloud
+      - yazi
+      - ffmpegthumbnailer
+      - poppler-utils
+      - jq
+
+      # --- Hardware, Rotation, Schoner & Strom sparen ---
+      - tlp
+      - tlp-rdw
+      - iio-sensor-proxy
+      - rot8
+      - swaylock            # Der offizielle, sichere Bildschirmschoner/Sperrbildschirm für Sway
+      - swayidle            # Hintergrunddienst für automatischen Standby/Bildschirmschoner
+      - swayaudio-idle-inhibit
+      - libwacom
+      - libwacom-utils
+      - xf86-input-wacom
+      - squeekboard
+      - xournalpp
+
+  # 3. Systemd-Dienste direkt beim Image-Bau aktivieren
+  - type: systemd
+    system:
+      enabled:
+        - tlp.service
+        - iio-sensor-proxy.service
+        - pcscd.service     # Aktiviert den Smartcard-Hintergrunddienst für YubiKey/Nitrokey
+
+  # 4. Desktop-Anwendungen via Flatpak (Sicher, isoliert und performant)
+  - type: flatpak
+    remotes:
+      - name: flatpak-repo
+        url: https://flathub.org
+    install:
+      - org.videolan.VLC
+      - org.telegram.desktop
+      - org.signal.Signal
+      - ch.threema.threema-web-desktop
+      - com.obsproject.Studio
+      - org.gnome.Papers    # Der moderne GNOME PDF/Dokumentenbetrachter (Nachfolger von Evince)
+      - org.gnome.eog       # "Eye of GNOME" (Der klassische, schnelle Bildbetrachter)
+
+# 20260605092900
