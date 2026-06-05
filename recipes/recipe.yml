@@ -111,3 +111,35 @@ modules:
   #    - com.obsproject.Studio
   #    - org.gnome.Papers    # Der moderne GNOME PDF-Betrachter
   #    - org.gnome.eog       # "Eye of GNOME" Bildbetrachter
+
+
+  - type: script
+    snippets:
+      - |
+        set -eux
+
+        echo "Installing build dependencies for wvkbd..."
+
+        dnf install -y \
+          git \
+          make \
+          gcc \
+          wayland-devel \
+          cairo-devel \
+          pango-devel \
+          libxkbcommon-devel \
+          pkgconf-pkg-config
+
+        echo "Cloning wvkbd..."
+
+        git clone --depth=1 https://github.com/jjsullivan5196/wvkbd.git /tmp/wvkbd
+        cd /tmp/wvkbd
+
+        echo "Building wvkbd..."
+
+        make
+
+        echo "Installing wvkbd..."
+
+        install -Dm755 wvkbd-mobintl /usr/bin/wvkbd-mobintl
+        ln -sf /usr/bin/wvkbd-mobintl /usr/bin/wvkbd
