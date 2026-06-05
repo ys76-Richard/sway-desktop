@@ -96,7 +96,7 @@ modules:
         ##################################################################
         echo "Installing build dependencies for wvkbd..."
 
-        dnf install --rpmverbosity=debug -y \
+        dnf install -y \
           cairo-devel \
           cargo \
           git \
@@ -104,27 +104,26 @@ modules:
           libxkbcommon-devel \
           make \
           meson \
-          ninja-build \
           gcc \
           glib2-devel \
           pango-devel \
-          rust \       
+          rust \
           systemd-devel \
           wayland-devel 
           
-        #echo "Cloning wvkbd..."
+        echo "Cloning wvkbd..."
 
-        #git clone --depth=1 https://github.com/jjsullivan5196/wvkbd.git /tmp/wvkbd
-        #cd /tmp/wvkbd
+        git clone --depth=1 https://github.com/jjsullivan5196/wvkbd.git /tmp/wvkbd
+        cd /tmp/wvkbd
 
-        #echo "Building wvkbd..."
+        echo "Building wvkbd..."
 
-        #make
+        make
 
-        #echo "Installing wvkbd..."
+        echo "Installing wvkbd..."
 
-        #install -Dm755 wvkbd-mobintl /usr/bin/wvkbd-mobintl
-        #ln -sf /usr/bin/wvkbd-mobintl /usr/bin/wvkbd
+        install -Dm755 wvkbd-mobintl /usr/bin/wvkbd-mobintl
+        ln -sf /usr/bin/wvkbd-mobintl /usr/bin/wvkbd
 
 
         ##################################################################
@@ -134,17 +133,17 @@ modules:
 
         echo "Cloning rot8..."
 
-        #git clone --depth=1 https://github.com/efernau/rot8.git /tmp/rot8
-        #cd /tmp/rot8
+        git clone --depth=1 https://github.com/efernau/rot8.git /tmp/rot8
+        cd /tmp/rot8
 
-        #echo "Building rot8..."
+        echo "Building rot8..."
 
-        #cargo build --release
+        cargo build --release
         
-        #echo "Installing rot8..."
+        echo "Installing rot8..."
         
-        #cp -av /tmp/rot8/target/release/rot8 /usr/bin/rot8
-        #chmod 755 /usr/bin/rot8
+        cp -av /tmp/rot8/target/release/rot8 /usr/bin/rot8
+        chmod 755 /usr/bin/rot8
 
 
         
