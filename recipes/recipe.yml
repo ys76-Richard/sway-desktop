@@ -27,6 +27,7 @@ modules:
       - brz                 # Bazaar-Nachfolger (Breezy)
       - chromium
       # - nextcloud-client-nautilus
+      - nextcloud-client-nautilus
       - remmina
       - remmina-plugins-rdp
 
@@ -63,7 +64,7 @@ modules:
       - mpg123              # Schneller Konsolen-MP3-Player
 
       # --- Grafik, Druck & Dateimanager ---
-      # - imagemagick         # Mächtige CLI-Bildbearbeitung
+      - ImageMagick           # Mächtige CLI-Bildbearbeitung
       # - pdfposter           # Skaliert PDFs auf Postergröße (Kacheldruck)
       - gutenprint          # Hochwertige Druckertreiber-Bibliothek
       - nautilus
