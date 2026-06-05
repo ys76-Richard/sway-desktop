@@ -26,7 +26,7 @@ modules:
       - neomutt
       - brz                 # Bazaar-Nachfolger (Breezy)
       - chromium
-      - nextcloud-client-nautilus
+      # - nextcloud-client-nautilus
       - remmina
       - remmina-plugins-rdp
 
@@ -46,11 +46,11 @@ modules:
       # --- LaTeX-Umgebung (Vollständig mit deutschem Sprachpaket) ---
       #- texlive-scheme-medium # Enthält LaTeX und die wichtigsten Basispakete
       - texlive
-      - texlive-lang-german # Deutsche Trennmuster, Dokumentationen und Pakete
+      # - texlive-lang-german # Deutsche Trennmuster, Dokumentationen und Pakete
       
       # --- Audio, Video & Kamera-Infrastruktur ---
       - v4l-utils           # Video4Linux-Utilities zur Kamera-Konfiguration
-      - akmod-v4l2loopback  # Kernel-Modul für virtuelle Webcams (z.B. für OBS Studio)
+      # - akmod-v4l2loopback  # Kernel-Modul für virtuelle Webcams (z.B. für OBS Studio)
       - brightnessctl       # Hardware-Helligkeitssteuerung
 
       # --- Audio-Ripping, Codecs und Metadaten-Editoren ---
@@ -59,12 +59,12 @@ modules:
       - opus-tools          # Opus-Audio-Codec-Werkzeuge
       - id3v2               # ID3v2-Tag-Editor für MP3s
       - id3lib              # ID3-Bibliothek für Software-Kompatibilität
-      - mp3split            # Präzises Schneiden von MP3/OGG-Dateien ohne Qualitätsverlust
+      # - mp3split            # Präzises Schneiden von MP3/OGG-Dateien ohne Qualitätsverlust
       - mpg123              # Schneller Konsolen-MP3-Player
 
       # --- Grafik, Druck & Dateimanager ---
-      - imagemagick         # Mächtige CLI-Bildbearbeitung
-      - pdfposter           # Skaliert PDFs auf Postergröße (Kacheldruck)
+      # - imagemagick         # Mächtige CLI-Bildbearbeitung
+      # - pdfposter           # Skaliert PDFs auf Postergröße (Kacheldruck)
       - gutenprint          # Hochwertige Druckertreiber-Bibliothek
       - nautilus
       - nautilus-nextcloud
@@ -83,7 +83,7 @@ modules:
       # - sway-audio-idle-inhibit # Pausiert Schoner bei Video/Audio
       - libwacom
       - libwacom-utils
-      - squeekboard
+      # - squeekboard
       - xournalpp
       - waybar
 
