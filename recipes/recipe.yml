@@ -73,19 +73,20 @@ modules:
         - pcscd.service 
   
   - type: default-flatpaks
-    notify: true                # Notifies the user when installations finish
-    system:
-      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      repo-name: flathub
-      repo-title: "Flathub (sys)"
-      install:
-        - org.videolan.VLC
-        - org.telegram.desktop
-        - org.signal.Signal
-        - ch.threema.threema-web-desktop
-        - com.obsproject.Studio
-       
-
+    configurations:
+      - scope: system
+        notify: true
+        repo:
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+          name: flathub
+          title: "Flathub (sys)"
+        install:
+          - org.videolan.VLC
+          - org.telegram.desktop
+          - org.signal.Signal
+          - ch.threema.threema-web-desktop
+          - com.obsproject.Studio
+          
   - type: script
     snippets:
       - |
