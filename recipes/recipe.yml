@@ -108,7 +108,7 @@ modules:
           gcc \
           glib2-devel \
           pango-devel \
-          pkgconf-pkg-config
+          pkgconf-pkg-config \
           rust \       
           systemd-devel \
           wayland-devel 
