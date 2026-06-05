@@ -77,12 +77,13 @@ modules:
       - rot8
       - swaylock            # Der offizielle, sichere Bildschirmschoner/Sperrbildschirm für Sway
       - swayidle            # Hintergrunddienst für automatischen Standby/Bildschirmschoner
-      - swayaudio-idle-inhibit
+      - sway-audio-idle-inhibit # Pausiert Schoner bei Video/Audio
       - libwacom
       - libwacom-utils
       - xf86-input-wacom
       - squeekboard
       - xournalpp
+      - waybar
 
   # 3. Systemd-Dienste direkt beim Image-Bau aktivieren
   - type: systemd
@@ -95,7 +96,7 @@ modules:
   # 4. Desktop-Anwendungen via Flatpak (Sicher, isoliert und performant)
   - type: flatpak
     remotes:
-      - name: flatpak-repo
+      - name: flathub
         url: https://flathub.org
     install:
       - org.videolan.VLC
@@ -103,7 +104,5 @@ modules:
       - org.signal.Signal
       - ch.threema.threema-web-desktop
       - com.obsproject.Studio
-      - org.gnome.Papers    # Der moderne GNOME PDF/Dokumentenbetrachter (Nachfolger von Evince)
-      - org.gnome.eog       # "Eye of GNOME" (Der klassische, schnelle Bildbetrachter)
-
-# 20260605092900
+      - org.gnome.Papers    # Der moderne GNOME PDF-Betrachter
+      - org.gnome.eog       # "Eye of GNOME" Bildbetrachter
