@@ -17,6 +17,8 @@ modules:
 
   #  Systemprogramme, Hardware-Treiber und CLI-Tools (RPM-Layering)
   - type: rpm-ostree
+    remove:
+      - tuned-ppd
     install:
       # --- Ihre Kern- und Netzwerkprogramme ---
       - firefox
