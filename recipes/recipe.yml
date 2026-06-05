@@ -127,12 +127,14 @@ modules:
         echo "Installing rot8 dependencies..."
 
         dnf install -y \
+          cargo \
           git \
           gcc \
           make \
           meson \
           ninja-build \
           libinput-devel \
+          rust \
           systemd-devel \
           glib2-devel
 
