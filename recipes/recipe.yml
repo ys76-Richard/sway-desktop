@@ -45,7 +45,14 @@ modules:
       - unzip               # Standard-Entpacker
       - screen              # Terminal-Multiplexer
       - mosh                # Mobile Shell (robuste SSH-Alternative für unterwegs)
-
+      # build environment
+      - scdoc
+      - gcc 
+      - gcc-c++ 
+      - cmake 
+      - make 
+      - rpm-build
+      
       # --- LaTeX-Umgebung (Vollständig mit deutschem Sprachpaket) ---
       #- texlive-scheme-medium # Enthält LaTeX und die wichtigsten Basispakete
       - texlive
@@ -57,17 +64,14 @@ modules:
       - brightnessctl       # Hardware-Helligkeitssteuerung
 
       # --- Audio-Ripping, Codecs und Metadaten-Editoren ---
-      # - abcde               # "A Better CD Encoder" (Automatisches CLI-Ripping)
       - flac                # FLAC-Audio-Codec-Werkzeuge
       - opus-tools          # Opus-Audio-Codec-Werkzeuge
       - id3v2               # ID3v2-Tag-Editor für MP3s
       - id3lib              # ID3-Bibliothek für Software-Kompatibilität
-      # - mp3split            # Präzises Schneiden von MP3/OGG-Dateien ohne Qualitätsverlust
       - mpg123              # Schneller Konsolen-MP3-Player
 
       # --- Grafik, Druck & Dateimanager ---
       - ImageMagick           # Mächtige CLI-Bildbearbeitung
-      # - pdfposter           # Skaliert PDFs auf Postergröße (Kacheldruck)
       - gutenprint          # Hochwertige Druckertreiber-Bibliothek
       - nautilus
       # - yazi
