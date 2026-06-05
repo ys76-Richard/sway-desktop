@@ -26,7 +26,7 @@ modules:
       - neomutt
       - brz                 # Bazaar-Nachfolger (Breezy)
       - chromium
-      - nextcloud-client
+      - nextcloud-client-nautilus
       - remmina
       - remmina-plugins-rdp
 
@@ -44,7 +44,8 @@ modules:
       - mosh                # Mobile Shell (robuste SSH-Alternative für unterwegs)
 
       # --- LaTeX-Umgebung (Vollständig mit deutschem Sprachpaket) ---
-      - texlive-scheme-medium # Enthält LaTeX und die wichtigsten Basispakete
+      #- texlive-scheme-medium # Enthält LaTeX und die wichtigsten Basispakete
+      - texlive
       - texlive-lang-german # Deutsche Trennmuster, Dokumentationen und Pakete
       
       # --- Audio, Video & Kamera-Infrastruktur ---
@@ -53,7 +54,7 @@ modules:
       - brightnessctl       # Hardware-Helligkeitssteuerung
 
       # --- Audio-Ripping, Codecs und Metadaten-Editoren ---
-      - abcde               # "A Better CD Encoder" (Automatisches CLI-Ripping)
+      # - abcde               # "A Better CD Encoder" (Automatisches CLI-Ripping)
       - flac                # FLAC-Audio-Codec-Werkzeuge
       - opus-tools          # Opus-Audio-Codec-Werkzeuge
       - id3v2               # ID3v2-Tag-Editor für MP3s
@@ -67,7 +68,7 @@ modules:
       - gutenprint          # Hochwertige Druckertreiber-Bibliothek
       - nautilus
       - nautilus-nextcloud
-      - yazi
+      # - yazi
       - ffmpegthumbnailer
       - poppler-utils
       - jq
@@ -79,7 +80,7 @@ modules:
       # - rot8
       - swaylock            # Der offizielle, sichere Bildschirmschoner/Sperrbildschirm für Sway
       - swayidle            # Hintergrunddienst für automatischen Standby/Bildschirmschoner
-      - sway-audio-idle-inhibit # Pausiert Schoner bei Video/Audio
+      # - sway-audio-idle-inhibit # Pausiert Schoner bei Video/Audio
       - libwacom
       - libwacom-utils
       - squeekboard
