@@ -49,7 +49,8 @@ modules:
       - remmina-plugins-rdp
       - rkhunter       
       - scdoc
-      - screen              
+      - screen 
+      - sway 
       - swayidle 
       - swaylock 
       - testdisk            
