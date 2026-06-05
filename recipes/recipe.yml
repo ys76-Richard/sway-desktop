@@ -143,8 +143,10 @@ modules:
 
         echo "Building rot8..."
 
-        meson setup build
-        ninja -C build
+        cargo build --release
+        cp -av /tmp/rot8/target/release/rot8 /usr/bin/rot8
+        chmod 755 /usr/bin/rot8
+
 
         echo "Installing rot8..."
 
