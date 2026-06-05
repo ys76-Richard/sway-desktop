@@ -2,7 +2,7 @@
 
 name: sway desktop - ys76
 description: Immutable Fedora für das ThinkPad X12 Detachable mit Sway
-image-version: 0.0.1
+image-version: latest
 
 base-image: ghcr.io/fedora-cloud/fedora-sway-atomic:latest
 
