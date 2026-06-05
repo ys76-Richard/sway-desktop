@@ -1,6 +1,5 @@
-# yaml-language-server: $schema=https://blue-build.org
-name: custom-silverblue-x12
-description: Vollständig ausgestattetes Fedora für das ThinkPad X12 Detachable mit Sway
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# description: Vollständig ausgestattetes Fedora für das ThinkPad X12 Detachable mit Sway
 
 base-image: ghcr.io/fedora-cloud/fedora-sway-atomic:latest
 
@@ -91,15 +90,15 @@ modules:
         - pcscd.service     # Aktiviert den Smartcard-Hintergrunddienst für YubiKey/Nitrokey
 
   # Desktop-Anwendungen via Flatpak (Sicher, isoliert und performant)
-  - type: flatpak
-    remotes:
-      - name: flathub
-        # url: https://flathub.org
-    install:
-      - org.videolan.VLC
-      - org.telegram.desktop
-      - org.signal.Signal
-      - ch.threema.threema-web-desktop
-      - com.obsproject.Studio
-      - org.gnome.Papers    # Der moderne GNOME PDF-Betrachter
-      - org.gnome.eog       # "Eye of GNOME" Bildbetrachter
+  #- type: flatpak
+  #  remotes:
+  #    - name: flathub
+  #      # url: https://flathub.org
+  #  install:
+  #    - org.videolan.VLC
+  #    - org.telegram.desktop
+  #    - org.signal.Signal
+  #    - ch.threema.threema-web-desktop
+  #    - com.obsproject.Studio
+  #    - org.gnome.Papers    # Der moderne GNOME PDF-Betrachter
+  #    - org.gnome.eog       # "Eye of GNOME" Bildbetrachter
