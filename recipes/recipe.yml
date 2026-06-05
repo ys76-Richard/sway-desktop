@@ -146,10 +146,13 @@ modules:
         echo "Building rot8..."
 
         cargo build --release
+        
+        echo "Installing rot8..."
+        
         cp -av /tmp/rot8/target/release/rot8 /usr/bin/rot8
         chmod 755 /usr/bin/rot8
 
 
-        echo "Installing rot8..."
+        
 
-        ninja -C build install
+        
