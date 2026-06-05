@@ -117,7 +117,7 @@ modules:
 
         install -Dm755 wvkbd-mobintl /usr/bin/wvkbd-mobintl
         ln -sf /usr/bin/wvkbd-mobintl /usr/bin/wvkbd
-- type: script
+
   snippets:
     - |
       set -eux
